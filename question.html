@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      href="/src/fonts/vazirmatn-v33.003/fonts/webfonts/Vazirmatn[wght].woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/src/styles/normalize.css" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <title>سؤال</title>
+  </head>
+
+  <body>
+    <div id="main">
+      <header class="main-header">
+        <div class="wrapper">
+          <h1 class="main-header__title" id="main-header-title">سؤال</h1>
+
+          <span class="spacer"></span>
+
+          <button class="primary" id="add-question">
+            <span>+</span>
+            <span>سؤال جدید</span>
+          </button>
+
+          <section class="main-header__user-profile">
+            <div class="user-profile__avatar">
+              <img src="/src/images/avatar.png" alt="avatar" />
+            </div>
+
+            <div class="user-profile__user-name">احمد سعیدی</div>
+
+            <div class="user-profile__drop-down">
+              <img src="/src/images/drop-down.svg" alt="drow-down" />
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <main class="main-container">
+        <div class="single-wrapper">
+          <div id="single-question"></div>
+          <div id="answers"></div>
+          <div class="send-answer-wrapper">
+            <h2>پاسخ خود را ثبت کنید!</h2>
+            <textarea
+              placeholder="متن پاسخ"
+              id="answer-text"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <button class="primary" id="submit-answer">ارسال پاسخ</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="add-question-modal" class="hidden">
+      <aside class="modal">
+        <header class="modal__header">
+          <span class="modal__title">ایجاد سؤال جدید</span>
+          <span class="spacer"></span>
+          <span id="modal-close">✕</span>
+        </header>
+
+        <div class="modal__input-wrapper">
+          <label class="modal__input-question-subject">
+            <span>موضوع سؤال</span>
+            <input type="text" id="question-subject" />
+          </label>
+
+          <label class="modal__input-question-text">
+            <span>متن سؤال</span>
+            <textarea name="" id="question-text" cols="30" rows="10"></textarea>
+          </label>
+
+          <div class="modal__buttons-wrapper">
+            <button class="secondry" id="discard-question">انصراف</button>
+            <button class="primary" id="submit-question">ایجاد سوال</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="/src/scripts/question-list.js"></script>
+    <script src="/src/scripts/single-question.js"></script>
+    <script src="/src/scripts/main.js"></script>
+  </body>
+</html>

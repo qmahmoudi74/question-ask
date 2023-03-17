@@ -1,6 +1,8 @@
-const questions = [];
+const questions = JSON.parse(window.localStorage.getItem("questions") ?? "[]");
+updateQuestionList();
 
 function createQuestionCard({
+  id = "",
   title = "",
   time = "",
   date = "",
@@ -40,7 +42,11 @@ function createQuestionCard({
                 <div class="question-card__wrapper">
               <p>${content}</p>
 
-              <button class="secondry" id="see-question-details">
+              <button
+                class="secondry"
+                id="see-question-details"
+                onclick="window.location.assign('/question.html?id=${id}')"
+              >
               مشاهده جرئیات
               </button>
               </div>
@@ -49,13 +55,17 @@ function createQuestionCard({
 
 function updateQuestionList() {
   const questionList = document.getElementById("question-list");
-  questionList.innerHTML = questions
+
+  if (!questionList) return;
+
+  questionList.innerHTML = (questions ?? [])
     .map((question) => createQuestionCard(question))
     .join(" ");
 }
 
 function addQuestion({ title = "", commentsNumber = 0, content = "" }) {
   questions.push({
+    id: crypto.randomUUID(),
     title,
     time: new Date().toLocaleString("fa-IR", {
       hour: "2-digit",
@@ -69,6 +79,8 @@ function addQuestion({ title = "", commentsNumber = 0, content = "" }) {
     commentsNumber,
     content
   });
+
+  window.localStorage.setItem("questions", JSON.stringify(questions));
 
   updateQuestionList();
 }
